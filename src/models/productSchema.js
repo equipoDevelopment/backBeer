@@ -15,11 +15,8 @@ const productSchema = new Schema(
     zone: String,
     score: Number,
     novelty: Boolean,
-    price: Number,
     photo1: String,
-    photo2: String,
-    photo3: String,
-    photo4: String,
+
   },
   {
     versionKey: false,

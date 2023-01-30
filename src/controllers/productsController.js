@@ -69,10 +69,10 @@ productosCtrl.get_productBrand = async (req, res) => {
   }
 };
 
-productosCtrl.get_productType = async (req, res) => {
-  const type = req.params.type;
+productosCtrl.get_productCategory = async (req, res) => {
+  const category = req.params.category;
   try {
-    const product = await productModel.get_type(type);
+    const product = await productModel.get_category(category);
     res.send(product).status(200);
   } catch (error) {
       res.end(error.message).status(500);
