@@ -5,7 +5,7 @@ const productSchema = new Schema(
     id: String,
     name:  { type: String, required: true },
     price: Number,
-    description: String,
+    description: { type: String, required: true },
     category: { type: String, required: true },
     total: Number,
     brand: String,
@@ -15,11 +15,8 @@ const productSchema = new Schema(
     zone: String,
     score: Number,
     novelty: Boolean,
-    price: Number,
     photo1: String,
-    photo2: String,
-    photo3: String,
-    photo4: String,
+
   },
   {
     versionKey: false,

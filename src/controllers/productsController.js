@@ -2,7 +2,7 @@ const productModel = require ('../services/productsModel')
 
 const productosCtrl = {};
 
-productosCtrl.get_products = async (req, res, next) => {
+productosCtrl.get_products = async (req, res) => {
   try {
     const products = await productModel.get_products();
     res.json(products, 200);
@@ -69,10 +69,10 @@ productosCtrl.get_productBrand = async (req, res) => {
   }
 };
 
-productosCtrl.get_productType = async (req, res) => {
-  const type = req.params.type;
+productosCtrl.get_productCategory = async (req, res) => {
+  const category = req.params.category;
   try {
-    const product = await productModel.get_type(type);
+    const product = await productModel.get_category(category);
     res.send(product).status(200);
   } catch (error) {
       res.end(error.message).status(500);
@@ -109,7 +109,7 @@ productosCtrl.get_productPrice = async (req, res) => {
   }
 };
 
-productosCtrl.get_productNovelty = async (req, res, next) => {
+productosCtrl.get_productNovelty = async (req, res) => {
   try {
     const products = await productModel.get_novelty();
     res.json(products, 200);

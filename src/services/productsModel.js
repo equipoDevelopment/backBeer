@@ -25,12 +25,12 @@ exports.edit_product = async (id,body) => {
 // Peticiones de la home/store al back sobre tipo detalles productos
 //
 
-exports.get_brand = async (brand) => {
+exports.get_brand  = async (brand) => {
   return await Product.find({brand}).where('total').gt(0);
 }
 
-exports.get_type  = async (type) => {
-  return await Product.find({type}).where('total').gt(0);
+exports.get_category  = async (category) => {
+  return await Product.find({category}).where('total').gt(0);
 }
 
 exports.get_graduation  = async (graduation) => {
@@ -45,6 +45,6 @@ exports.get_price  = async (price) => {
   return await Product.find({price}).where('total').gt(0);
 }
 
-exports.get_novelty  = async () => {
-  return await Product.find({novelty:true});
+exports.get_productsNovelty  = async () => {
+  return await Product.find({novelty:true}).where('total').gt(0);
 }

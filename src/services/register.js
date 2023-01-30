@@ -3,6 +3,7 @@ const Client = require('../models/clientSchema');
 const bcrypt = require('bcrypt');
 const jwt = require('jsonwebtoken');
 const { config } = require('../../config/config');
+const emailSend = require('../services/sendMail');
 
 // Función hash
 encryptPassword = (password) => {
@@ -50,6 +51,8 @@ exports.new_user = async (body) => {
         { expiresIn: 60 * 3 },
         { algorithm: 'RS256' }
       );
+      emailSend.sendMail(Newclient, token);
+      console.log(token);
       return result = { token } ;
     }
   };
