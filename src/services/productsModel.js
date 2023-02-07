@@ -48,3 +48,4 @@ exports.get_price  = async (price) => {
 exports.get_productsNovelty  = async () => {
   return await Product.find({novelty:true}).where('total').gt(0);
 }
+

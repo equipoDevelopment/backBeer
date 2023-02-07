@@ -1,4 +1,5 @@
-const productModel = require ('../services/productsModel')
+const productModel = require ('../services/productsModel');
+
 
 const productosCtrl = {};
 
@@ -117,6 +118,8 @@ productosCtrl.get_productNovelty = async (req, res) => {
       res.status(500).send(error.message);
   }
 };
+
+
 
 module.exports = productosCtrl;
 
