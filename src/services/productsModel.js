@@ -21,9 +21,6 @@ exports.edit_product = async (id,body) => {
   return await Product.findByIdAndUpdate(id, body);
 }
 
-//
-// Peticiones de la home/store al back sobre tipo detalles productos
-//
 
 exports.get_brand  = async (brand) => {
   return await Product.find({brand}).where('total').gt(0);
@@ -45,6 +42,11 @@ exports.get_price  = async (price) => {
   return await Product.find({price}).where('total').gt(0);
 }
 
-exports.get_productsNovelty  = async () => {
-  return await Product.find({novelty:true}).where('total').gt(0);
+exports.get_novelty = async () => {
+  function getRandomInt(max) {
+    return Math.floor(Math.random() * max);
+  }
+  skipNumeber = getRandomInt(40);
+  return await Product.find({ novelty: true }).limit(4)
+    .skip(skipNumeber).where('total').gt(0); 
 }
