@@ -87,6 +87,17 @@ usersCtrl.login_users = async (req, res) => {
     res.status(500).send({ 'ERROR :': error.message });
   }
 };
+usersCtrl.login_token = async (req, res) => {
+  token = req.query.token
+  try {
+    const result = await login.tokenVeryfy(token);
+    res.status(200).json(result);
+
+  } catch (error) {
+    res.status(500).send({ 'ERROR :': error.message });
+  }
+
+};
 
 
 module.exports = usersCtrl;

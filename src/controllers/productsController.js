@@ -2,7 +2,7 @@ const productModel = require ('../services/productsModel')
 
 const productosCtrl = {};
 
-productosCtrl.get_products = async (req, res, next) => {
+productosCtrl.get_products = async (req, res) => {
   try {
     const products = await productModel.get_products();
     res.json(products, 200);
@@ -109,7 +109,7 @@ productosCtrl.get_productPrice = async (req, res) => {
   }
 };
 
-productosCtrl.get_productNovelty = async (req, res, next) => {
+productosCtrl.get_productNovelty = async (req, res) => {
   try {
     const products = await productModel.get_novelty();
     res.json(products, 200);
