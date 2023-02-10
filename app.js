@@ -9,6 +9,9 @@ const optionsWL = require('./src/Middleware/cors');
 require('./src/db/database');
 
 const morgan = require('morgan'); //Pependencia Desarollo
+const { query } = require('express');
+const { urlToHttpOptions } = require('url');
+const { Query } = require('mongoose');
 
 // Middleware
 app.use(cors(optionsWL));
