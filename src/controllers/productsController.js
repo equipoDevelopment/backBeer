@@ -1,15 +1,16 @@
-const productModel = require ('../services/productsModel')
+const productModel = require ('../services/productsModel');
+
 
 const productosCtrl = {};
 
-// productosCtrl.get_products = async (req, res, next) => {
-//   try {
-//     const products = await productModel.get_products();
-//     res.json(products, 200);
-//   } catch (error) {
-//       res.status(500).send(error.message);
-//   }
-// };
+productosCtrl.get_products = async (req, res) => {
+  try {
+    const products = await productModel.get_products();
+    res.json(products, 200);
+  } catch (error) {
+      res.status(500).send(error.message);
+  }
+};
 
 productosCtrl.delete_product = async (req, res) => {
   try {
@@ -27,7 +28,7 @@ productosCtrl.add_product = async (req, res) => {
     let product = await productModel.add_product(req.body);
       res.json(product, 201);
   } catch (error) {
-     res.status(500).send(error.message);
+      res.status(500).send(error.message);
   }
 };
 
@@ -77,6 +78,71 @@ productosCtrl.get_novelty = async (req, res, next) => {
   
   
 };
+
+//
+// A continuación muestra los productos en la Store/home
+//
+
+productosCtrl.get_productBrand = async (req, res) => {
+  const brand = req.params.brand;
+  try {
+    const product = await productModel.get_brand(brand);
+      res.send(product).status(200);
+  } catch (error) {
+      res.end(error.message).status(500);
+  }
+};
+
+productosCtrl.get_productCategory = async (req, res) => {
+  const category = req.params.category;
+  try {
+    const product = await productModel.get_category(category);
+    res.send(product).status(200);
+  } catch (error) {
+      res.end(error.message).status(500);
+  }
+};
+
+productosCtrl.get_productGraduation = async (req, res) => {
+  const graduation = req.params.graduation;
+  try {
+    const product = await productModel.get_graduation(graduation);
+    res.send(product).status(200);
+  } catch (error) {
+      res.end(error.message).status(500);
+  }
+};
+
+productosCtrl.get_productScore = async (req, res) => {
+  const score = req.params.score;
+  try {
+    const product = await productModel.get_score(score);
+    res.send(product).status(200);
+  } catch (error) {
+      res.end(error.message).status(500);
+  }
+};
+
+productosCtrl.get_productPrice = async (req, res) => {
+  const price = req.params.price;
+  try {
+    const product = await productModel.get_price(price);
+    res.send(product).status(200);
+  } catch (error) {
+      res.end(error.message).status(500);
+  }
+};
+
+productosCtrl.get_productsNovelty = async (req, res) => {
+  try {
+    const products = await productModel.get_novelty();
+    res.json(products, 200);
+  } catch (error) {
+      res.status(500).send(error.message);
+  }
+};
+
+
 
 module.exports = productosCtrl;
 

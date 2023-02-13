@@ -20,25 +20,20 @@ app.use(morgan('dev'));
 app.use(express.static(join(__dirname, 'public')));
 
 // Routes
-app.use('/api', require ('./src/routes/usersRouter'));
-app.use('/api', require ('./src/routes/productsRouter'));
-app.use('/api', require ('./src/routes/clientsRoutes'));
-app.use('/api', require ('./src/routes/ordersRoutes'));
-  
-  
+app.use('/api', require('./src/routes/usersRouter'));
+app.use('/api', require('./src/routes/productsRouter'));
+app.use('/api', require('./src/routes/clientsRoutes'));
+app.use('/api', require('./src/routes/ordersRoutes'));
 
 // 404 not found
 app.use((req, res, next) => {
-  res.status(404).send('404');
+  res.status(404).redirect('/404.html')
 });
 
-
-
 // Start server
-let port = config.port
+let port = config.port;
 let server = app.listen(port, () => {
-    console.log(`🌐 Servidor escuchando en http://localhost:` + port);
-  });
+  console.log(`🌐 Servidor escuchando en http://localhost:` + port);
+});
 
-  
 module.exports = { app, server };
