@@ -11,7 +11,7 @@ require('./src/db/database');
 const morgan = require('morgan'); //Pependencia Desarollo
 
 // Middleware
-app.use(cors(optionsWL));
+app.use(cors());
 app.use(express.json());
 app.use(express.urlencoded({ extended: false }));
 app.use(morgan('dev'));
