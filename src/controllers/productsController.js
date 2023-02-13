@@ -109,7 +109,7 @@ productosCtrl.get_productPrice = async (req, res) => {
   }
 };
 
-productosCtrl.get_productNovelty = async (req, res) => {
+productosCtrl.get_productsNovelty = async (req, res) => {
   try {
     const products = await productModel.get_novelty();
     res.json(products, 200);
