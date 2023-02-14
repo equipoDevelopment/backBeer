@@ -20,5 +20,4 @@ router.get("/get_productPrice/:price", productosCtrl.get_productPrice);
 router.get("/get_productsNovelty" ,productosCtrl.get_productsNovelty);
 router.get("/get_brands", brandCtrl.get_brands);
 
-
 module.exports = router;
