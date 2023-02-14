@@ -6,7 +6,7 @@ const productosCtrl = {};
 productosCtrl.get_products = async (req, res) => {
   try {
     const products = await productModel.get_products();
-    res.json(products, 200);
+    res.status(200).send(products);
   } catch (error) {
       res.status(500).send(error.message);
   }
@@ -26,7 +26,7 @@ productosCtrl.delete_product = async (req, res) => {
 productosCtrl.add_product = async (req, res) => {
   try {
     let product = await productModel.add_product(req.body);
-      res.json(product, 201);
+      res.status(201).send(product);
   } catch (error) {
       res.status(500).send(error.message);
   }
