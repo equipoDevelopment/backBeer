@@ -17,6 +17,8 @@ app.use(express.urlencoded({ extended: false }));
 app.use(morgan('dev'));
 app.use(function (request, response, next){
   response.header('Access-Control-Allow-Origin','*');
+  response.header('Access-Control-Allow-Methods', 'OPTIONS,GET,PUT,POST,DELETE');
+  response.header('Access-Control-Allow-Headers', 'Origin,Accept, Authorization, Content-Type, X-Requested-With, Range,Content-Range,Accept-Ranges,Content-Length');
   next();
   });
 
