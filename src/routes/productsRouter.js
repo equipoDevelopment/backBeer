@@ -11,7 +11,6 @@ router.get("/get_product/:id" ,productosCtrl.get_product);
 router.put("/edit_product/:id" ,productosCtrl.edit_product);
 router.get("/get_productBrand/:brand" ,productosCtrl.get_productBrand);
 
-
 // Routes for home/store
 router.get("/get_productCategory/:category", productosCtrl.get_productCategory);
 router.get("/get_productBrand/:brand", productosCtrl.get_productBrand);
