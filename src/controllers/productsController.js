@@ -60,9 +60,9 @@ productosCtrl.get_productBrand = async (req, res) => {
   const brand = req.params.brand;
   try {
     const product = await productModel.get_brand(brand);
-      res.send(product).status(200);
+      res.status(200).send(product);
   } catch (error) {
-      res.end(error.message).status(500);
+      res.send(error.message).status(500);
   }
 };
 
@@ -100,7 +100,7 @@ productosCtrl.get_productPrice = async (req, res) => {
   const price = req.params.price;
   try {
     const product = await productModel.get_price(price);
-    res.send(product).status(200);
+    res.status(200).send(product);
   } catch (error) {
       res.end(error.message).status(500);
   }
@@ -109,7 +109,7 @@ productosCtrl.get_productPrice = async (req, res) => {
 productosCtrl.get_productsNovelty = async (req, res) => {
   try {
     const products = await productModel.get_productsNovelty();
-    res.json(products, 200);
+    res.status(200).send(products);
   } catch (error) {
       res.status(500).send(error.message);
   }
