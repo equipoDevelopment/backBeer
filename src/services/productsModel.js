@@ -22,14 +22,9 @@ exports.edit_product = async (id,body) => {
 }
 
 exports.get_brand  = async (brand) => {
-  console.log(brand);
   return await Product.find();
 }
 
-<<<<<<< HEAD
-exports.get_novelty  = async () => {
-=======
 exports.get_productsNovelty  = async () => {
->>>>>>> main
   return await Product.find({novelty:true});
 }
