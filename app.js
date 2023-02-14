@@ -15,6 +15,10 @@ app.use(cors({origin:'*'}));
 app.use(express.json());
 app.use(express.urlencoded({ extended: false }));
 app.use(morgan('dev'));
+app.use(function (request, response, next){
+  response.header('Access-Control-Allow-Origin','*');
+  next();
+  });
 
 // Static files
 app.use(express.static(join(__dirname, 'public')));
