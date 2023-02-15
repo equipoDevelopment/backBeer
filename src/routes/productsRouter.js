@@ -17,7 +17,9 @@ router.get("/get_productBrand/:brand", productosCtrl.get_productBrand);
 router.get("/get_productGraduation/:graduation", productosCtrl.get_productGraduation);
 router.get("/get_productScore/:score", productosCtrl.get_productScore);
 router.get("/get_productPrice/:price", productosCtrl.get_productPrice);
-router.get("/get_productsNovelty" ,productosCtrl.get_productsNovelty);
+router.get("/get_productsNovelty", productosCtrl.get_productsNovelty);
+
+// Routes for modelBrand
 router.get("/get_brands", brandCtrl.get_brands);
 
 module.exports = router;

@@ -1,10 +1,8 @@
 const brandsModel = require ('../services/brandsModel');
 
-
 const brandCtrl = {};
 
 //Peticiones para mostrar marcas en home
-
 brandCtrl.get_brands = async (req, res) => {
     try {
       const brands = await brandsModel.get_brands();

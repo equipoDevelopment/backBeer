@@ -1,5 +1,5 @@
+const { query } = require('express');
 const productModel = require ('../services/productsModel');
-
 
 const productosCtrl = {};
 
@@ -9,6 +9,16 @@ productosCtrl.get_products = async (req, res) => {
     res.status(200).send(products);
   } catch (error) {
       res.status(500).send(error.message);
+  }
+};
+
+productosCtrl.get_product = async (req, res) => {
+  const id = req.params.id;
+  try {
+    const product = await productModel.get_product({ _id: id });
+      res.send(product).status(200)
+  } catch (error) {
+      res.end(error.message).status(204);
   }
 };
 
@@ -32,15 +42,6 @@ productosCtrl.add_product = async (req, res) => {
   }
 };
 
-productosCtrl.get_product = async (req, res) => {
-  const id = req.params.id;
-  try {
-    const product = await productModel.get_product({ _id: id });
-      res.send(product).status(200)
-  } catch (error) {
-      res.end(error.message).status(204);
-  }
-};
 
 productosCtrl.edit_product = async (req, res) => {
   const body = req.body;
@@ -56,6 +57,8 @@ productosCtrl.edit_product = async (req, res) => {
   }
 };
 
+
+//add
 productosCtrl.get_productBrand = async (req, res) => {
   const brand = req.params.brand;
   try {

@@ -9,13 +9,8 @@ router.delete("/delete_user/:id", usersCtrl.delete_user);
 router.get("/get_user/:id" ,usersCtrl.get_user);
 router.put("/edit_user/:id", usersCtrl.edit_user);
 
-
 router.post("/register", usersCtrl.register_user);
 router.post("/login", usersCtrl.login_users);
-
 router.get("/login/token/", usersCtrl.login_token);
-
-router.post("/register", usersCtrl.register_user);
-router.post("/login", usersCtrl.login_users);
 
 module.exports = router;

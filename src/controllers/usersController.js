@@ -8,7 +8,7 @@ const usersCtrl = {};
 usersCtrl.get_users = async (req, res, next) => {
   try {
     const users = await userModel.get_users();
-    res.status(200).send(users);//cambiado json por send
+    res.status(200).send(users);
   } catch (error) {
     res.status(500).send(error.message);
   }
@@ -21,8 +21,8 @@ usersCtrl.delete_user = async (req, res) => {
       {
         mensaje: '🔥 Eliminado correctamente 🔥',
       },
-      200
-    );
+      
+    ).status(200);
   } catch (error) {
     res.status(500).send(error.message);
   }
@@ -31,7 +31,7 @@ usersCtrl.delete_user = async (req, res) => {
 usersCtrl.add_user = async (req, res) => {
   try {
     let user = await userModel.add_user(req.body);
-    res.status(201).send(user);//cambiado json por send
+    res.status(201).send(user);
   } catch (error) {
     res.status(500).send(error.message);
   }
@@ -81,7 +81,7 @@ usersCtrl.login_users = async (req, res) => {
   try {
     const body = await login.get_match(email, password);
     console.log(body);
-    res.status(200).send(body);//cambiado json por send
+    res.status(200).send(body);
 
   } catch (error) {
     res.status(500).send({ 'ERROR :': error.message });
@@ -91,7 +91,7 @@ usersCtrl.login_token = async (req, res) => {
   token = req.query.token
   try {
     const result = await login.tokenVeryfy(token);
-    res.status(200).send(result);//cambiado json por send
+    res.status(200).send(result);
 
   } catch (error) {
     res.status(500).send({ 'ERROR :': error.message });

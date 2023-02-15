@@ -5,7 +5,7 @@ const ordersCtrl = {};
 ordersCtrl.get_orders = async (req, res, next) => {
   try {
     const orders = await ordersModel.get_orders();
-    res.status(200).send(orders);//cambiado json por send
+    res.status(200).send(orders);
   } catch (error) {
       res.status(500).send(error.message);
   }
@@ -25,7 +25,7 @@ ordersCtrl.delete_order = async (req, res) => {
 ordersCtrl.add_order = async (req, res) => {
   try {
     let order = await ordersModel.add_order(req.body);
-      res.status(201).send(order);//cambiado json por send
+      res.status(201).send(order);
   } catch (error) {
      res.status(500).send(error.message);
   }
