@@ -113,8 +113,8 @@ productosCtrl.get_productPrice = async (req, res) => {
 
 productosCtrl.get_productNovelty = async (req, res) => {
   try {
-    const products = await productModel.get_productsNovelty();
-    res.status(200).send(products);
+    const product = await productModel.get_novelty();
+    res.status(200).send(product);
   } catch (error) {
       res.status(500).send(error.message);
   }
