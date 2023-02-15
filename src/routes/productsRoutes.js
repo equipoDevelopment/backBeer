@@ -1,6 +1,6 @@
 const { Router } = require("express");
 const router = Router();
-const productosCtrl = require("../../src/controllers/productsController");
+const productosCtrl = require("../controllers/productsController");
 
 // CRUD Admin for Routes Products
 router.get("/get_products", productosCtrl.get_products);

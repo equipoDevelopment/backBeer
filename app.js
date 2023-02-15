@@ -31,11 +31,11 @@ app.set('Access-Control-Allow-Origin', '*')
 app.use(express.static(join(__dirname, 'public')));
 
 // Routes
-app.use('/api', require('./src/routes/usersRouter'));
-app.use('/api', require('./src/routes/productsRouter'));
+app.use('/api', require('./src/routes/usersRoutes'));
+app.use('/api', require('./src/routes/productsRoutes'));
 app.use('/api', require('./src/routes/clientsRoutes'));
 app.use('/api', require('./src/routes/ordersRoutes'));
-app.use('/api', require('./src/routes/brandRouter'));
+app.use('/api', require('./src/routes/brandRoutes'));
 
 // 404 not found
 app.use((req, res, next) => {
