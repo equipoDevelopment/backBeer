@@ -23,6 +23,7 @@ exports.edit_product = async (id,body) => {
 }
 
 
+
 //add for home and store
 exports.get_brand  = async (brand) => {
   return await Product.find({brand}).where('total').gt(0);
@@ -45,10 +46,5 @@ exports.get_price  = async (price) => {
 }
 
 exports.get_novelty = async () => {
-  function getRandomInt(max) {
-    return Math.floor(Math.random() * max);
-  }
-  skipNumeber = getRandomInt(40);
-  return await Product.find({ novelty: true }).limit(4)
-    .skip(skipNumeber).where('total').gt(0); 
+  return await Product.find({ novelty: true }); 
 }
