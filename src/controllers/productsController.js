@@ -1,13 +1,25 @@
-const productModel = require ('../services/productsModel')
+const { query } = require('express');
+const productModel = require ('../services/productsModel');
 
 const productosCtrl = {};
 
+// original CRUD
 productosCtrl.get_products = async (req, res) => {
   try {
     const products = await productModel.get_products();
-    res.json(products, 200);
+    res.status(200).send(products);
   } catch (error) {
       res.status(500).send(error.message);
+  }
+};
+
+productosCtrl.get_product = async (req, res) => {
+  const id = req.params.id;
+  try {
+    const product = await productModel.get_product({ _id: id });
+      res.send(product).status(200)
+  } catch (error) {
+      res.end(error.message).status(204);
   }
 };
 
@@ -25,22 +37,13 @@ productosCtrl.delete_product = async (req, res) => {
 productosCtrl.add_product = async (req, res) => {
   try {
     let product = await productModel.add_product(req.body);
-      res.json(product, 201);
+      res.status(201).send(product);
   } catch (error) {
       
       res.status(500).send(error.message);
   }
 };
 
-productosCtrl.get_product = async (req, res) => {
-  const id = req.params.id;
-  try {
-    const product = await productModel.get_product({ _id: id });
-      res.send(product).status(200)
-  } catch (error) {
-      res.end(error.message).status(204);
-  }
-};
 
 productosCtrl.edit_product = async (req, res) => {
   const body = req.body;
@@ -56,17 +59,15 @@ productosCtrl.edit_product = async (req, res) => {
   }
 };
 
-//
-// A continuación muestra los productos en la Store/home
-//
 
+//add for App
 productosCtrl.get_productBrand = async (req, res) => {
   const brand = req.params.brand;
   try {
     const product = await productModel.get_brand(brand);
-      res.send(product).status(200);
+      res.status(200).send(product);
   } catch (error) {
-      res.end(error.message).status(500);
+      res.send(error.message).status(500);
   }
 };
 
@@ -104,7 +105,7 @@ productosCtrl.get_productPrice = async (req, res) => {
   const price = req.params.price;
   try {
     const product = await productModel.get_price(price);
-    res.send(product).status(200);
+    res.status(200).send(product);
   } catch (error) {
       res.end(error.message).status(500);
   }
@@ -112,8 +113,8 @@ productosCtrl.get_productPrice = async (req, res) => {
 
 productosCtrl.get_productNovelty = async (req, res) => {
   try {
-    const products = await productModel.get_novelty();
-    res.json(products, 200);
+    const products = await productModel.get_productsNovelty();
+    res.status(200).send(products);
   } catch (error) {
       res.status(500).send(error.message);
   }

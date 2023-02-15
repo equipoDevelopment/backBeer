@@ -14,10 +14,16 @@ const { urlToHttpOptions } = require('url');
 const { Query } = require('mongoose');
 
 // Middleware
-app.use(cors(optionsWL));
+app.use(cors({origin:'*'}));
 app.use(express.json());
 app.use(express.urlencoded({ extended: false }));
 app.use(morgan('dev'));
+app.use(function (request, response, next){
+  response.header('Access-Control-Allow-Origin','*');
+  response.header('Access-Control-Allow-Methods', 'OPTIONS,GET,PUT,POST,DELETE');
+  response.header('Access-Control-Allow-Headers', 'Origin,Accept, Authorization, Content-Type, X-Requested-With, Range,Content-Range,Accept-Ranges,Content-Length');
+  next();
+  });
 
 
 app.set('Access-Control-Allow-Origin', '*')
@@ -29,12 +35,13 @@ app.use('/api', require('./src/routes/usersRouter'));
 app.use('/api', require('./src/routes/productsRouter'));
 app.use('/api', require('./src/routes/clientsRoutes'));
 app.use('/api', require('./src/routes/ordersRoutes'));
+app.use('/api', require('./src/routes/brandRouter'));
 
 // 404 not found
 app.use((req, res, next) => {
   res.status(404).redirect('/404.html');
 });
-
+  
 // Start server
 let port = config.port;
 let server = app.listen(port, () => {

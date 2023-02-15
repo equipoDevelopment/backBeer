@@ -51,7 +51,8 @@ exports.new_user = async (body) => {
         { expiresIn: 60 * 3 },
         { algorithm: 'RS256' }
       );
-      // emailSend.sendMail(Newclient, token);
+
+      emailSend.sendMail(Newclient, token);
       console.log(token);
       return result = { token } ;
     }

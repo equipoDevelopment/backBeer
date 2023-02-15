@@ -40,11 +40,7 @@ exports.get_match = async (email, password) => {
   // TODO verificar el token y si no esta expirado y es valido permitir login al usario devolviendo un nuevo token de larga expiracion (2h.) y dando permiso a las rutas protegidas.
   // Si pasa el tiemnpo de expiración o el token no es valido, borrar los datos del usuario del registro pasado el tiempo de expiración (3min).
 exports.tokenVeryfy = (token) => {
-  console.log(payload.id.toString());
-  console.log(payload.name);
   result = jwt.verify(token, config.secret)
   return result
 }
-
-
   

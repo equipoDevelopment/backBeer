@@ -5,7 +5,7 @@ const clientsCtrl = {};
 clientsCtrl.get_clients = async (req, res, next) => {
   try {
     const clients = await clientModel.get_clients();
-    res.json(clients, 200);
+    res.status(200).send(clients);
   } catch (error) {
       res.status(500).send(error.message);
   }
@@ -25,7 +25,7 @@ clientsCtrl.delete_client = async (req, res) => {
 clientsCtrl.add_client = async (req, res) => {
   try {
     let client = await clientModel.add_client(req.body);
-      res.json(client, 201);
+      res.status(201).send(client);
   } catch (error) {
      res.status(500).send(error.message);
   }

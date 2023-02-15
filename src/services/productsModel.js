@@ -1,5 +1,6 @@
 const Product = require('../models/productSchema')
 
+//CRUD services
 exports.get_products  = async () => {
   return await Product.find();
 }
@@ -22,6 +23,7 @@ exports.edit_product = async (id,body) => {
 }
 
 
+//add for home and store
 exports.get_brand  = async (brand) => {
   return await Product.find({brand}).where('total').gt(0);
 }
