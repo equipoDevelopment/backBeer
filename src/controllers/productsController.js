@@ -27,6 +27,7 @@ productosCtrl.add_product = async (req, res) => {
     let product = await productModel.add_product(req.body);
       res.json(product, 201);
   } catch (error) {
+      
       res.status(500).send(error.message);
   }
 };

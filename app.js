@@ -19,6 +19,8 @@ app.use(express.json());
 app.use(express.urlencoded({ extended: false }));
 app.use(morgan('dev'));
 
+
+app.set('Access-Control-Allow-Origin', '*')
 // Static files
 app.use(express.static(join(__dirname, 'public')));
 
