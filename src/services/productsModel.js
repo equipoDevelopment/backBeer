@@ -22,9 +22,14 @@ exports.edit_product = async (id,body) => {
 }
 
 exports.get_brand  = async (brand) => {
-  return await Product.find();
+  return await Product.find().where('total').gt(0);
 }
 
-exports.get_productsNovelty  = async () => {
-  return await Product.find({novelty:true});
+exports.get_novelty = async () => {
+  function getRandomInt(max) {
+    return Math.floor(Math.random() * max);
+  }
+  skipNumeber = getRandomInt(40);
+  return await Product.find({ novelty: true }).limit(4)
+    .skip(skipNumeber).where('total').gt(0); 
 }
