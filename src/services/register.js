@@ -42,7 +42,7 @@ exports.new_user = async (body) => {
       const Newclient = new Client(client); 
       await Client.create(Newclient); 
       let token = jwt.sign(  
-        {
+        payload ={
           id: Newclient._id,
           name: Newclient.name,
   
@@ -51,6 +51,7 @@ exports.new_user = async (body) => {
         { expiresIn: 60 * 3 },
         { algorithm: 'RS256' }
       );
+
       emailSend.sendMail(Newclient, token);
       console.log(token);
       return result = { token } ;

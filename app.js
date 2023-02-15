@@ -9,6 +9,9 @@ const optionsWL = require('./src/Middleware/cors');
 require('./src/db/database');
 
 const morgan = require('morgan'); //Pependencia Desarollo
+const { query } = require('express');
+const { urlToHttpOptions } = require('url');
+const { Query } = require('mongoose');
 
 // Middleware
 app.use(cors({origin:'*'}));
@@ -22,6 +25,8 @@ app.use(function (request, response, next){
   next();
   });
 
+
+app.set('Access-Control-Allow-Origin', '*')
 // Static files
 app.use(express.static(join(__dirname, 'public')));
 
@@ -30,12 +35,13 @@ app.use('/api', require('./src/routes/usersRouter'));
 app.use('/api', require('./src/routes/productsRouter'));
 app.use('/api', require('./src/routes/clientsRoutes'));
 app.use('/api', require('./src/routes/ordersRoutes'));
+app.use('/api', require('./src/routes/brandRouter'));
 
 // 404 not found
 app.use((req, res, next) => {
-  res.status(404).redirect('/404.html')
+  res.status(404).redirect('/404.html');
 });
-
+  
 // Start server
 let port = config.port;
 let server = app.listen(port, () => {

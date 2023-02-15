@@ -1,5 +1,6 @@
 const Product = require('../models/productSchema')
 
+//CRUD services
 exports.get_products  = async () => {
   return await Product.find();
 }
@@ -21,10 +22,33 @@ exports.edit_product = async (id,body) => {
   return await Product.findByIdAndUpdate(id, body);
 }
 
+
+//add for home and store
 exports.get_brand  = async (brand) => {
-  return await Product.find();
+  return await Product.find({brand}).where('total').gt(0);
 }
 
-exports.get_productsNovelty  = async () => {
-  return await Product.find({novelty:true});
+exports.get_category  = async (category) => {
+  return await Product.find({category}).where('total').gt(0);
+}
+
+exports.get_graduation  = async (graduation) => {
+  return await Product.find({graduation}).where('total').gt(0);
+}
+
+exports.get_score  = async (score) => {
+  return await Product.find({score}).where('total').gt(0);
+}
+
+exports.get_price  = async (price) => {
+  return await Product.find({price}).where('total').gt(0);
+}
+
+exports.get_novelty = async () => {
+  function getRandomInt(max) {
+    return Math.floor(Math.random() * max);
+  }
+  skipNumeber = getRandomInt(40);
+  return await Product.find({ novelty: true }).limit(4)
+    .skip(skipNumeber).where('total').gt(0); 
 }
