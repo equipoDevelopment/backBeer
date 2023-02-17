@@ -52,8 +52,8 @@ exports.new_user = async (body) => {
         { algorithm: 'RS256' }
       );
 
-      emailSend.sendMail(Newclient, token);
+      // emailSend.sendMail(Newclient, token);
       console.log(token);
-      return result = { token } ;
+      return result = { "YourToken" :token } ;
     }
   };
